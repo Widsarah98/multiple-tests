@@ -11,6 +11,10 @@ class SecurePage extends Page {
     get errorAlert () {
         return $('//h3[@data-test="error"]')
     }
+
+    get selectProduct () {
+        return $('//a[@id="item_4_title_link"]')
+    }
 }
 
 export default new SecurePage();
