@@ -21,6 +21,7 @@ class LoginPage extends Page {
         await this.insertPassword.setValue(password);
         await this.btnLogin.click();
     }
+    
 
 
 

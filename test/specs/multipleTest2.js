@@ -4,13 +4,14 @@ import SecurePage from '../multiplePageObjects/multipleSecurePage.js';
 import Page from '../multiplePageObjects/multiplePage.js';
 
 
-describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
-        await LoginPage.open()
+describe('Logging in and adding item to cart', () => {
+    it('should login with valid credentials and add an item to the cart', async () => {
+        await SecurePage.addingToCart(SecurePage.selectBackpack, SecurePage.backpackDetails);
+        // await SecurePage.backToProductsBtn.click();
+        await SecurePage.continueShoppingBtn.click();
+        await SecurePage.addingToCart(SecurePage.selectJacket, SecurePage.jacketDetails);
 
-        await LoginPage.login('standard_user', 'secret_sauce')
-        await expect(SecurePage.loggedIn).toBeExisting()
-        await this.btnLogin.click();
+       
 
     })
 
