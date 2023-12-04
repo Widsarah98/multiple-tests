@@ -11,3 +11,11 @@ describe('Checking out with a product', () => {
     })
 
 })
+
+describe('Trying to checkout without filling out all the necessary fields', () => {
+    it('should give you an error message.', async () => {
+        
+        await SecurePage.checkoutEmptyFieldsError(SecurePage.selectJacket, SecurePage.jacketDetails);
+    
+    })
+})

@@ -15,6 +15,14 @@ class LoginPage extends Page {
         return $('#login-button');
     }
 
+    get hamburgerMenu () {
+        return $('#react-burger-menu-btn')
+    }
+
+    get logoutBtn () {
+        return $('#logout_sidebar_link')
+    }
+
    
     async login (username, password) {
         await this.insertUsername.setValue(username);
@@ -22,6 +30,15 @@ class LoginPage extends Page {
         await this.btnLogin.click();
     }
     
+    async loginLogout (username, password) {
+        await this.insertUsername.setValue(username);
+        await this.insertPassword.setValue(password);
+        await this.btnLogin.click();
+        await this.hamburgerMenu.click();
+        await this.logoutBtn.click();
+        await browser.pause(5000);
+        await expect(this.btnLogin).toBeExisting();
+    }
 
 
 

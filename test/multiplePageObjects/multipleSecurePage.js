@@ -77,6 +77,22 @@ class SecurePage extends Page {
         return $('#postal-code')
     }
 
+    get continueInCheckout () {
+        return $('#continue')
+    }
+
+    get emptyCheckoutFieldError () {
+        return $('.error-message-container.error')
+    }
+
+    get finishButton () {
+        return $('#finish')
+    }
+
+    get orderConfirmation () {
+        return $('.pony_express')
+    }
+
     async checkout (firstName, lastName, zip) {
         await this.firstNameField.setValue(firstName);
         await this.lastNameField.setValue(lastName);
@@ -103,7 +119,20 @@ class SecurePage extends Page {
         await this.checkoutBtn.click();
         await expect(this.checkoutYourInfo).toBeExisting();
         await this.checkout('Sarah', 'Hansen', '84027');
+        await this.continueInCheckout.click();
+        await this.finishButton.click();
+        await expect(this.orderConfirmation).toBeExisting();
     }
+
+    async checkoutEmptyFieldsError (productSelector1, detailsOfProduct2) {
+        await this.addingToCart(productSelector1, detailsOfProduct2);
+        await this.checkoutBtn.click();
+        await expect(this.checkoutYourInfo).toBeExisting();
+        await this.checkout('', 'Hansen', '848359');
+        await this.continueInCheckout.click();
+        await expect(this.emptyCheckoutFieldError).toBeExisting();
+    } 
+
 }
 
 export default new SecurePage();
