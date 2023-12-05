@@ -29,19 +29,19 @@ class LoginPage extends Page {
         await this.insertPassword.setValue(password);
         await this.btnLogin.click();
     }
-    
+
+
     async loginLogout (username, password) {
-        await this.insertUsername.setValue(username);
-        await this.insertPassword.setValue(password);
-        await this.btnLogin.click();
+        await this.open();
+        await this.login('standard_user', 'secret_sauce');
+        await expect(SecurePage.loggedIn).toBeExisting();
+        await expect(SecurePage.loggedIn).toHaveTextContaining(
+            'Swag Labs')
         await this.hamburgerMenu.click();
         await this.logoutBtn.click();
-        await browser.pause(5000);
         await expect(this.btnLogin).toBeExisting();
+    
     }
-
-
-
 
     open () {
         return super.open();
