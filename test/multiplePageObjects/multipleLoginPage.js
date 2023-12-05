@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals'
 import Page from './multiplePage.js';
+import SecurePage from './multipleSecurePage.js';
 
 class LoginPage extends Page {
     

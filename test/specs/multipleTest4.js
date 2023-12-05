@@ -7,5 +7,7 @@ import Page from '../multiplePageObjects/multiplePage.js';
 describe('My logging out application', () => {
     it('should login with valid credentials and logout when I click logout', async () => {
         await LoginPage.loginLogout('standard_user', 'secret_sauce')
+
     })
+    
 })
